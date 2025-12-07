@@ -5,21 +5,22 @@ import { Variant } from '@/schema/variants'
 import type { EmbeddedWallet } from '@/schema/wallet'
 import { paragraph } from '@/types/content'
 
-export const waapEmbeddedTemplate: EmbeddedWallet = {
+export const waapEmbeddedWallet: EmbeddedWallet = {
 	metadata: {
-		id: 'unrated',
-		displayName: 'Unrated embedded wallet template',
-		tableName: 'Unrated',
+		id: 'waap',
+		displayName: 'WaaP',
+		tableName: 'WaaP',
 		blurb: paragraph(`
-			This is a fictitious embedded wallet with all of its fields unrated.
-			It is meant to be useful to copy-paste to other wallet files
-			when initially creating the skeleton structure for their data.
+			A free, self-custodial, and secure alternative to WaaS. Instead of renting keys that only work on one application,
+			WaaP uses social logins to create controller keys for free universal wallets. These wallets are composable
+			across apps and have security mechanisms beyond just the social login factors. It is not only a B2B wallet but also a 
+			B2C wallet that works anywhere.
 		`),
 		contributors: [exampleContributor],
 		iconExtension: 'svg',
-		lastUpdated: '2020-01-01',
-		repoUrl: 'https://example.com/repo',
-		url: 'https://example.com',
+		lastUpdated: '2025-04-12',
+		repoUrl: 'https://github.com/holonym-foundation/silk',
+		url: 'https://waap.xyz',
 	},
 	features: {
 		accountSupport: null,
@@ -35,14 +36,14 @@ export const waapEmbeddedTemplate: EmbeddedWallet = {
 				hiddenConvenienceFees: null,
 				publicOffering: null,
 				selfFunded: null,
-				transparentConvenienceFees: null,
-				ventureCapital: null,
+				transparentConvenienceFees: true,
+				ventureCapital: true,
 			},
 		},
 		multiAddress: null,
 		privacy: {
 			dataCollection: null,
-			privacyPolicy: 'https://example.com/privacy-policy',
+			privacyPolicy: 'https://human.tech/policy',
 			transactionPrivacy: null,
 		},
 		profile: WalletProfile.GENERIC,
@@ -55,7 +56,7 @@ export const waapEmbeddedTemplate: EmbeddedWallet = {
 			publicSecurityAudits: null,
 		},
 		selfSovereignty: {
-			interoperability: null,
+			interoperability: true,
 		},
 		transparency: {
 			operationFees: null,

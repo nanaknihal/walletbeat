@@ -1,7 +1,12 @@
 import { type BaseWallet, type RatedWallet, rateWallet } from '@/schema/wallet'
 import { WalletType } from '@/schema/wallet-types'
 
-import { unratedEmbeddedWallet } from './embedded-wallets'
+import { 
+	type EmbeddedWalletName,
+	embeddedWallets,
+	isValidEmbeddedWalletName,
+	unratedEmbeddedWallet 
+} from './embedded-wallets'
 import {
 	type HardwareWalletName,
 	hardwareWallets,
@@ -14,21 +19,22 @@ import {
 	softwareWallets,
 	unratedSoftwareWallet,
 } from './software-wallets'
-
+	
 /** Set of all known software wallets. */
 export const allWallets = Object.fromEntries(
 	([] as Array<[string, BaseWallet]>).concat(
 		Object.entries(softwareWallets),
 		Object.entries(hardwareWallets),
+		Object.entries(embeddedWallets),
 	),
 )
 
 /** A valid wallet name. */
-export type WalletName = SoftwareWalletName | HardwareWalletName
+export type WalletName = SoftwareWalletName | HardwareWalletName | EmbeddedWalletName
 
 /** Type predicate for WalletName. */
 export function isValidWalletName(name: string): name is WalletName {
-	return isValidSoftwareWalletName(name) || isValidHardwareWalletName(name)
+	return isValidSoftwareWalletName(name) || isValidHardwareWalletName(name) || isValidEmbeddedWalletName(name)
 }
 
 /** All rated wallets. */
